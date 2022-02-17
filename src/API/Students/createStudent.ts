@@ -5,17 +5,17 @@ import { Student } from "../../Types/class_student";
 export const createStudent = async (req: Request, resp: Response):Promise<void> => {
     let errorCode = 400
     try {
-        const { name, email, birthDate, team_id, specialities } = req.body
+        const { name, email, birthDate, team_id, hobbies } = req.body
 
         const id = "StudentId" + Date.now().toString()
 
-        if (!name || !email || !birthDate || !team_id || specialities){
+        if (!name || !email || !birthDate || !team_id || !hobbies){
             errorCode = 422
             throw new Error('Verifique se todos os campos pedidos foram preenchidos.')
         }
 
         const studentData = new StudentDataBase()
-        const studentStats: Student = new Student(id, name, email, birthDate, team_id, specialities)
+        const studentStats: Student = new Student(id, name, email, birthDate, team_id, hobbies)
         await studentData.create_newStudent(studentStats)
 
 

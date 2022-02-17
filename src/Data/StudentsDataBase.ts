@@ -7,8 +7,8 @@ export class StudentDataBase extends ConnectionData {
         await ConnectionData.connection.raw(`
             INSERT INTO labesystem_students (id, name, email, birthDate, team_id)
             VALUES
-                ("${student.get_id}", "${student.get_name}", "${student.get_email}", 
-                 "${student.get_birthDate}", "${student.get_teamId}");
+                ("${student.get_id()}", "${student.get_name()}", "${student.get_email()}", 
+                 "${student.get_birthDate()}", "${student.get_teamId()}");
         `)
 
         const hobbies = student.get_Hobby()
@@ -32,7 +32,7 @@ export class StudentDataBase extends ConnectionData {
             await ConnectionData.connection.raw(`
                 INSERT INTO labesystem_studentHobby (id, student_id, hobby_id)
                 VALUES
-                    ("${studentHobby_id}", "${student.get_id}", "${hobby_id()}");
+                    ("${studentHobby_id()}", "${student.get_id()}", "${hobby_id()}");
             `)
         }
     }

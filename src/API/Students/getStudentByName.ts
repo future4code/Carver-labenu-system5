@@ -7,6 +7,7 @@ export const getStudentByName = async (req: Request, resp: Response):Promise<voi
     try {
         const name: string = req.params.nome
 
+
         const studentData = new StudentDataBase()
         const results: Student[] = await studentData.get_studentByName(name)
 

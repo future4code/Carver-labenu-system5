@@ -7,8 +7,8 @@ export class TeacherDataBase extends ConnectionData {
         await ConnectionData.connection.raw(`
             INSERT INTO labesystem_teachers (id, name, email, birthDate, team_id)
             VALUES
-                ("${teacher.get_id}", "${teacher.get_name}", "${teacher.get_email}", 
-                "${teacher.get_birthDate}", "${teacher.get_teamId}");
+                ("${teacher.get_id()}", "${teacher.get_name()}", "${teacher.get_email()}", 
+                "${teacher.get_birthDate()}", "${teacher.get_teamId()}");
         `)
 
         const specialities = teacher.get_Speciality()
@@ -32,7 +32,7 @@ export class TeacherDataBase extends ConnectionData {
             await ConnectionData.connection.raw(`
                 INSERT INTO labesystem_teacherSpeciality (id, student_id, hobby_id)
                 VALUES
-                    ("${teacherSpeciality_id}", "${teacher.get_id}", "${speciality_id()}");
+                    ("${teacherSpeciality_id()}", "${teacher.get_id()}", "${speciality_id()}");
             `)
         }
     }
@@ -49,6 +49,5 @@ export class TeacherDataBase extends ConnectionData {
             UPDATE labesystem_teachers SET team_id = "${team_id}" WHERE id = "${id}";
         `)
     }
-
 
 }

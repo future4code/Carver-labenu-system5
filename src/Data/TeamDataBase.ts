@@ -7,7 +7,7 @@ export class TeamDataBase extends ConnectionData {
         await ConnectionData.connection.raw(`
             INSERT INTO labesystem_team (id, name, module)
             VALUES
-                ("${team.get_id}", "${team.get_name}", "${team.get_module}");
+                ("${team.get_id()}", "${team.get_name()}", "${team.get_module()}");
         `)
     }
 

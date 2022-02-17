@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { TeacherDataBase } from "../../Data/TeachersDataBase";
 import { Teacher } from "../../Types/class_teacher";
+import dotenv from "dotenv"
+import { connection } from "../../Data/connection";
 
 export const getTeachers = async (req: Request, resp: Response):Promise<void> => {
     let errorCode = 400

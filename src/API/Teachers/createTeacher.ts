@@ -9,7 +9,7 @@ export const createTeacher = async (req: Request, resp: Response):Promise<void> 
 
         const id = "TeacherId" + Date.now().toString()
 
-        if (!name || !email || !birthDate || !team_id || specialities){
+        if (!name || !email || !birthDate || !team_id || !specialities){
             errorCode = 422
             throw new Error('Verifique se todos os campos pedidos foram preenchidos.')
         }
