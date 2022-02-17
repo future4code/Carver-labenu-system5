@@ -8,8 +8,7 @@
     "dev": "tsnd --transpile-only --ignore-watch node_modules ./src/index.ts",
     "build": "tsc",
     "migrations": "tsnd ./src/data/migrations.ts"
- },
-
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/future4code/Carver-labenu-system5.git"
