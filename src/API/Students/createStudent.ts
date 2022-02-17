@@ -9,12 +9,38 @@ export const createStudent = async (req: Request, resp: Response):Promise<void> 
 
         const id = "StudentId" + Date.now().toString()
 
-        if (!name || !email || !birthDate || !team_id || !hobbies){
+        if (!name || !email || !birthDate || !team_id){
             errorCode = 422
             throw new Error('Verifique se todos os campos pedidos foram preenchidos.')
         }
 
+        if (hobbies === ""){
         const studentData = new StudentDataBase()
+        const results: Hobbies[] = await studentData.get_Hobby(hobbies)
+
+            if(results.length === 0){
+                errorCode = 422
+                throw new Error('Hobbie ainda não existe!')
+            }
+
+        resp.status(200).send(results[0])
+        }
+
+        // const idParamsOK: any = await studentData.get_studentsId
+
+        // if(!idParamsOK[0].length){
+
+        // }
+        // const idVerification = await connection.raw(`
+        // SELECT id FROM labecommerce_purchases WHERE id = "${id}"
+        // `)
+
+        //     if(!idVerification[0].length){
+        //         errorCode = 422
+        //         throw new Error('este ID não existe')
+        //     }
+
+        
         const studentStats: Student = new Student(id, name, email, birthDate, team_id, hobbies)
         await studentData.create_newStudent(studentStats)
 

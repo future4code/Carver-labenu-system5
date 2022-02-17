@@ -57,4 +57,11 @@ export class StudentDataBase extends ConnectionData {
         `)
     }
 
+    async get_hobbies(Hobbies: string[]): Promise<Student[]>{
+        const results: Student[] = await ConnectionData.connection.raw(`
+            SELECT * FROM labesystem_studentHobby WHERE Hobbies LIKE "%${Hobbies}%";
+        `)
+        return results
+    }
+
 }
