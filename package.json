@@ -10,6 +10,7 @@
     "migrations": "tsnd ./src/data/migrations.ts"
  },
 
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/future4code/Carver-labenu-system5.git"
