@@ -1,46 +1,66 @@
 import { Request, Response } from "express";
+import { ConnectionData } from "../../Data/ConnectionData";
 import { StudentDataBase } from "../../Data/StudentsDataBase";
+import { HobbyDataBase } from "../../Data/HobbyDataBase";
 import { Student } from "../../Types/class_student";
+import { Hobby } from "../../Types/class_hobby";
 
 export const createStudent = async (req: Request, resp: Response):Promise<void> => {
     let errorCode = 400
     try {
         const { name, email, birthDate, team_id, hobbies } = req.body
 
-        const id = "StudentId" + Date.now().toString()
-
         if (!name || !email || !birthDate || !team_id){
             errorCode = 422
             throw new Error('Verifique se todos os campos pedidos foram preenchidos.')
         }
 
-        if (hobbies === ""){
-        const studentData = new StudentDataBase()
-        const results: Hobbies[] = await studentData.get_Hobby(hobbies)
+        if (hobbies.length === 0){
+            throw new Error('O campo hobbies precisa ser preenchido.')
+        }else {
+            const hobbyDataBase = new HobbyDataBase()
+            
+            for (let n = 0; n < hobbies.length; n++) {
+                const results: Hobby[] = await hobbyDataBase.get_hobbyByName(hobbies[n])
+                console.log(results)
+                if(results.length === 0){
+                    errorCode = 422
+                    throw new Error('Hobbie ainda não existe!')
+                }
 
-            if(results.length === 0){
-                errorCode = 422
-                throw new Error('Hobbie ainda não existe!')
             }
-
-        resp.status(200).send(results[0])
+         
         }
 
-        // const idParamsOK: any = await studentData.get_studentsId
-
-        // if(!idParamsOK[0].length){
-
+        // const StudentId = (): string => {
+        //     return ("StudentId" + Date.now().toString())
         // }
-        // const idVerification = await connection.raw(`
-        // SELECT id FROM labecommerce_purchases WHERE id = "${id}"
-        // `)
 
-        //     if(!idVerification[0].length){
-        //         errorCode = 422
-        //         throw new Error('este ID não existe')
-        //     }
+        // if(!StudentId === ""){
+            
+        // }
+
+        // const Verification = async(): string =>  {
+        //     const results: Hobby[] = await hobbyDataBase.get_hobbyByName(hobbies[n])
+
+        //     const idVerification: string = await ConnectionData.connection.raw(`
+        //         SELECT id WHERE id LIKE "%${StudentId()}%" FROM labesystem_Hobby;
+        //         `)
+                
+        //         if(!idVerification){
+        //             let errorCode = 422
+        //             throw new Error('Hobbie já existe!')
+        //         }
+        //         return idVerification
+        // }
+
+
+
+    
+
 
         
+        const studentData = new StudentDataBase()
         const studentStats: Student = new Student(id, name, email, birthDate, team_id, hobbies)
         await studentData.create_newStudent(studentStats)
 

@@ -14,4 +14,3 @@ export class Student extends User {
         return this.Hobbies
     }
 }
-
