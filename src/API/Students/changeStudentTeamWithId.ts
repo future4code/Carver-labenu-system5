@@ -13,23 +13,6 @@ export const changeStudentTeamWithId = async (req: Request, resp: Response):Prom
         if (!team_id){
             throw new Error('Você não informou nenhum ID no body.')
         }
-
-        // const studentData = new StudentDataBase() 
-
-        // const idParamsOK: any = await studentData.get_studentsId
-
-        // if(!idParamsOK[0].length){
-
-        // }
-        // const idVerification = await connection.raw(`
-        // SELECT id FROM labecommerce_purchases WHERE id = "${id}"
-        // `)
-
-        //     if(!idVerification[0].length){
-        //         errorCode = 422
-        //         throw new Error('este ID não existe')
-        //     }
-
         const studentData = new StudentDataBase()
         await studentData.change_studentFromTeam(id, team_id)
 

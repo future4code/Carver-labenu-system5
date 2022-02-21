@@ -7,10 +7,7 @@ export class Student extends User {
         email: string, 
         birthDate: string, 
         team_id: string,
-        protected Hobbies: string[]
-    ) { super(id, name, email, birthDate, team_id)}
-
-    public get_Hobby(): string[] {
-        return this.Hobbies
+    ) { 
+        super(id, name, email, birthDate, team_id)
     }
 }
