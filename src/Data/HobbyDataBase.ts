@@ -4,32 +4,32 @@ import { ConnectionData } from "./ConnectionData";
 
 export class HobbyDataBase extends ConnectionData {
 
-      async get_hobbyByName(name: string): Promise<Hobby[]>{
-        const results: Hobby[] = await ConnectionData.connection.raw(`
-            SELECT id WHERE name LIKE "%${name}%" FROM labesystem_Hobby;
+      async get_hobbiesByName(name: string): Promise<Hobby[]>{
+        const [results]: [any][] = await ConnectionData.connection.raw(`
+            SELECT id, name FROM labesystem_Hobby WHERE name LIKE "${name}";
         `)
-        return results
+    
+        return results.map(v => new Hobby(v.id, v.name))
       }
 
-      async create_newHobby(hobby: Hobby){
-          const hobby_id = (): string => {
+      async create_newHobby(name: string): Promise<void>{
+        const hobby_id = (): string => {
             return ("HobbyId" + Date.now().toString())
         }
-        await ConnectionData.connection.raw(`
+        const id = hobby_id()
+        return ConnectionData.connection.raw(`
             INSERT INTO labesystem_Hobby (id, name)
             VALUES
-                ("${hobby_id}", "${hobby.get_name()}");
+                ("${id}", "${name}");
         `)
       }  
 
       async insert_newHobby(hobby: StudentHobby){
-        const studenthobby_id = (): string => {
-          return ("HobbyId" + Date.now().toString())
-      }
+        
       await ConnectionData.connection.raw(`
           INSERT INTO labesystem_studentHobby (id, student_id, hobby_id)
           VALUES
-              ("${studenthobby_id}", "${hobby.get_student_id()}", "${hobby.get_hobby_id()}");
+              ("${hobby.get_id()}", "${hobby.get_student_id()}", "${hobby.get_hobby_id()}");
       `)
     }
 

@@ -4,7 +4,6 @@ import { ConnectionData } from "./ConnectionData";
 export class StudentDataBase extends ConnectionData {
 
     async create_newStudent(student: Student){
-
             await ConnectionData.connection.raw(`
             INSERT INTO labesystem_students (id, name, email, birthDate, team_id)
             VALUES
@@ -26,6 +25,14 @@ export class StudentDataBase extends ConnectionData {
         await ConnectionData.connection.raw(`
             UPDATE labesystem_students SET team_id = "${team_id}" WHERE id = "${id}";
         `)
+    }
+
+    async get_studentAnHobbiesById(id: string): Promise<Student[]>{
+        const results: Student[] = await ConnectionData.connection.raw(`
+            SELECT * FROM labesystem_students st WHERE st.id = "${id}";
+            
+        `)
+        return results
     }
 
 }

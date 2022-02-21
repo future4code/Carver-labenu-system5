@@ -1,5 +1,5 @@
 
-export abstract class StudentHobby {
+export class StudentHobby {
   protected id: string
   protected student_id: string
   protected hobby_id: string

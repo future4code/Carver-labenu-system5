@@ -1,7 +1,8 @@
 
-export abstract class  Hobby {
+export class Hobby {
   protected id: string
   protected name: string
+
     constructor(
         id: string, 
         name: string
