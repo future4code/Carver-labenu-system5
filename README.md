@@ -1,5 +1,5 @@
 # LabenuSystem
-<img src=”https://img.shields.io/badge/-TypeScript-blue”>
+<img src="https://img.shields.io/badge/-TypeScript-blue">
 
 Neste projeto nos foi proposto criar um sistema para criação e manipulação as informações em sete tabelas do banco, através de instruções SQL.
 
