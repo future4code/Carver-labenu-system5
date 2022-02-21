@@ -44,4 +44,4 @@ As funcionalidades básicas são:
 - Axios
 - MySQL
 - Express
-- JSON
+
