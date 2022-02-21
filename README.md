@@ -1,12 +1,16 @@
-## LabenuSystem - Carver 5:
-Neste projeto nos foi proposto para criarmos um sistema seguindo alguns passos propostoso que representa-se como o sistema de nosso curso funciona. E especial dividiram em "três" categorias...
+# LabenuSystem
+<img src=”https://img.shields.io/badge/-TypeScript-blue”>
+
+Neste projeto nos foi proposto criar um sistema para criação e manipulação as informações em sete tabelas do banco, através de instruções SQL.
+
 - Estudantes (Students)
 - Docentes (Teachers)
 - Turmas (Teams)
+- Hobbies
 
-Informações do projeto: https://labenu.notion.site/IWFS-LabenuSystem-837273e6dde44dbcb32a1f9a066a8905
+[Informações do projeto](https://labenu.notion.site/IWFS-LabenuSystem-837273e6dde44dbcb32a1f9a066a8905)
 
-Documentação do projeto: https://documenter.getpostman.com/view/18386638/UVkjwxgv
+[Documentação do projeto](https://documenter.getpostman.com/view/18386638/UVkjwxgv)
 
 <hr/>
 
@@ -30,14 +34,14 @@ As funcionalidades básicas são:
 
 → Adicionar docente na turma;
 
-→ Pegar a idade de algum estudante a partir do id
+→ Pegar a idade de algum estudante a partir do id;
 
 ## Tecnologias utilizadas
 
-- Typescript
-- NodetJS
+- TypeScript
+- NodeJS
 - Knex
-- Classes
+- Axios
 - MySQL
 - Express
 - JSON
