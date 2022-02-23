@@ -1,0 +1,1 @@
+export const errorMesage = (error: any) => { error.sqlMessage || error.message }
